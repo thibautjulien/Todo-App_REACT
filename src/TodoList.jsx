@@ -10,7 +10,7 @@ function TodoList({ todos, onToggleComplete }) {
                <li key={todo.id}>
                   <label>
                      <input type="checkbox" checked={todo.completed} onChange={() => onToggleComplete(todo.id)} className="taskCheck" />
-                     {todo.id} - {todo.text}
+                     {todo.text}
                   </label>
                </li>
             ))}

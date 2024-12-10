@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoList from "./TodoList.jsx";
 import Form from "./Form.jsx";
+import { v4 as uuidv4 } from "uuid";
+
+const LSKEY = "MyTodoApp";
 
 function App() {
-   const [todos, setTodos] = useState([
-      { id: 1, text: "My first todo", completed: false },
-      { id: 2, text: "Patato", completed: false },
-      { id: 3, text: "Faire les courses", completed: false },
-   ]);
+   function getInitialTodos() {
+      const savedTodos = window.localStorage.getItem(LSKEY + ".todos");
+      return savedTodos ? JSON.parse(savedTodos) : [];
+   }
+   const [todos, setTodos] = useState(getInitialTodos);
 
    const addTodo = (text) => {
       const newTodo = {
-         id: todos.length + 1,
+         id: uuidv4(),
          text: text,
          completed: false,
       };
@@ -21,6 +24,10 @@ function App() {
    const toggleComplete = (id) => {
       setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
    };
+
+   useEffect(() => {
+      window.localStorage.setItem(LSKEY + ".todos", JSON.stringify(todos));
+   }, [todos]);
 
    return (
       <>
