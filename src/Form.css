@@ -1,0 +1,19 @@
+.TodoApp__content {
+     margin: 3rem auto;
+     padding: 0 2rem;
+}
+
+Form {
+     display: flex;
+     flex-direction: column;
+}
+
+Input {
+     padding: 0.5rem 0.6rem;
+}
+
+Button {
+     width: 10rem;
+     margin: 0.5rem auto;
+     padding: 0.3rem;
+}

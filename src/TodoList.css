@@ -1,0 +1,23 @@
+#root {
+     max-width: 1280px;
+     margin: 0 auto;
+     padding: 2rem;
+     text-align: center;
+}
+
+.TodoApp__list {
+     border-top: 1px solid darkgray;
+}
+
+.TodoApp__list > p {
+     font-size: 2rem;
+}
+
+ul {
+     list-style: none;
+     text-align: left;
+}
+
+.taskCheck {
+     margin-right: 1rem;
+}
