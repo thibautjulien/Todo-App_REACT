@@ -14,7 +14,6 @@ function Form({ onAddTodo }) {
       }
    };
 
-   console.log(todos)
 
    return (
       <>
