@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 function TodoList({ remainingTodos, todos, onToggleComplete, onDeleteTodo }) {
   return (
     <div className="TodoApp__list">
-      <p>Todo List</p>
-      <p id="remainingTodos">{remainingTodos === 0 ? "No task" : `${remainingTodos} task${remainingTodos <= 1 ? "" : "s"} left`}</p>
+      <p>
+        Todo List ― <span id="remainingTodos">{remainingTodos === 0 ? "No task" : `${remainingTodos} task${remainingTodos <= 1 ? "" : "s"} left`}</span>
+      </p>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
