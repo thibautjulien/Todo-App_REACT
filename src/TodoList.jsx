@@ -1,25 +1,29 @@
 import "./TodoList.css";
 import PropTypes from "prop-types";
 
-function TodoList({ todos, onToggleComplete }) {
-   return (
-      <div className="TodoApp__list">
-         <p>Todo List</p>
-         <ul>
-            {todos.map((todo) => (
-               <li key={todo.id}>
-                  <label>
-                     <input type="checkbox" checked={todo.completed} onChange={() => onToggleComplete(todo.id)} className="taskCheck" />
-                     {todo.text}
-                  </label>
-               </li>
-            ))}
-         </ul>
-      </div>
-   );
+function TodoList({ remainingTodos, todos, onToggleComplete, onDeleteTodo }) {
+  return (
+    <div className="TodoApp__list">
+      <p>Todo List</p>
+      <p id="remainingTodos">{remainingTodos === 0 ? "No task" : `${remainingTodos} task${remainingTodos <= 1 ? "" : "s"} left`}</p>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <label>
+              <input type="checkbox" checked={todo.completed} onChange={() => onToggleComplete(todo.id)} className="taskCheck" />
+              {todo.text}
+            </label>
+            <button className={`buttonDelete ${!todo.completed ? "hidden" : ""}`} disabled={!todo.completed} onClick={() => onDeleteTodo(todo.id)}>
+              ❌
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-TodoList.propTypes = {
+/* TodoList.propTypes = {
    todos: PropTypes.arrayOf(
       PropTypes.shape({
          id: PropTypes.number.isRequired,
@@ -28,6 +32,6 @@ TodoList.propTypes = {
       })
    ).isRequired,
    onToggleComplete: PropTypes.func.isRequired,
-};
+}; */
 
 export default TodoList;
