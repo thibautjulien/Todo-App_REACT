@@ -1,7 +1,7 @@
-import "./TodoList.css";
+import "./styles/TodoList.scss";
 import PropTypes from "prop-types";
 
-function TodoList({ remainingTodos, todos, onToggleComplete, onDeleteTodo }) {
+function TodoList({ remainingTodos, todos, onToggleComplete, onDeleteTodo, onAllDeleteTodo }) {
   return (
     <div className="TodoApp__list">
       <p>
@@ -12,7 +12,7 @@ function TodoList({ remainingTodos, todos, onToggleComplete, onDeleteTodo }) {
           <li key={todo.id}>
             <label>
               <input type="checkbox" checked={todo.completed} onChange={() => onToggleComplete(todo.id)} className="taskCheck" />
-              {todo.text}
+              <span className={`priority ${todo.priority}`}>{todo.priority}</span> - {todo.text}
             </label>
             <button className={`buttonDelete ${!todo.completed ? "hidden" : ""}`} disabled={!todo.completed} onClick={() => onDeleteTodo(todo.id)}>
               ❌
@@ -20,6 +20,7 @@ function TodoList({ remainingTodos, todos, onToggleComplete, onDeleteTodo }) {
           </li>
         ))}
       </ul>
+      <button onClick={() => onAllDeleteTodo()}>Clear Completed</button>
     </div>
   );
 }

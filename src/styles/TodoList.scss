@@ -1,0 +1,83 @@
+@use "App";
+
+.TodoApp__list {
+  border-left: 1px solid darkgray;
+  margin-left: 5rem;
+  padding: 2rem 5rem;
+  @include App.mobile {
+    border-top: 1px solid darkgray;
+    border-left: none;
+    margin-left: 0;
+  }
+}
+
+.TodoApp__list > p {
+  font-size: 2rem;
+}
+
+#remainingTodos {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: gray;
+  width: 150px;
+  border-radius: 50px;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+ul > li {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hidden {
+  display: none;
+}
+
+.taskCheck {
+  margin-right: 1rem;
+}
+
+.buttonDelete {
+  font-size: 1rem;
+  margin-left: 2rem;
+}
+
+.priority {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.priority.low {
+  color: white;
+  background-color: green;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+.priority.medium {
+  color: white;
+  background-color: orange;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+.priority.high {
+  color: white;
+  background-color: red;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
